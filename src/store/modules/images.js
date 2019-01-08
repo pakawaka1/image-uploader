@@ -10,11 +10,11 @@ const getters = {
 };
 
 const actions = {
-    async fetchImages({ rootState }) {
+    async fetchImages({ rootState, commit }) {
         // rootState.auth.token;
         const { token } = rootState.auth;
         const response = await api.fetchImages(token);
-        console.log(response);
+        commit('setImages', response.data.data) 
     }
 };
 
