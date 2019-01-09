@@ -1,14 +1,20 @@
 <template>
-    <div class="dropper">
-        <input type="file" />
-        <span>Drag Files Here!</span>
+    <div>
+        <div v-if="isLoggedIn" class="dropper">
+            <input type="file" @change="uploadImages($event.target.files)" multiple accept="image/*"/>
+            <span>Drag Files Here!</span>
+        </div>
+        <h2 v-else>Log in to get started!</h2>
     </div>
 </template>
 
 <script>
-export default {
-    name: 'UploadForm'
-};
+    import { mapActions, mapGetters } from 'vuex';
+    export default {
+        name: 'UploadForm',
+        computed: mapGetters(['isLoggedIn']),
+        methods: mapActions(['uploadImages'])
+    };
 </script>
 
 <style scoped>

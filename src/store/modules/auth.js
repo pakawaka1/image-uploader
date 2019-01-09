@@ -24,6 +24,8 @@ const actions = {
         commit('setToken', null);
         window.localStorage.removeItem('imgur_token');
         // commit is used instead of mutations.setToken
+        router.push('/');
+
     }
 };
 
